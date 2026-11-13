@@ -1,0 +1,189 @@
+/* ===== BLISMIX LP (mobile-first) =====
+   Built from the leaflet itself:
+   - ground = the leaflet's paper texture; the grey clover loops behind the cover; the stone wall with the
+     cat & dog silhouettes at the bottom; the vertical BLISMIX wordmark of the cover.
+   - navy for cat products, brown for dog products (as in the leaflet); gold = the clover mark; orange = the cover catch.
+   - the K12 explanation keeps the leaflet's green box, the thought keeps the brown ribbon, the feeding notes keep the frame.
+   No card grids, no gradients for decoration, no English eyebrow labels. */
+:root{
+  --paper:#FAF5E8; --ink:#2B2522; --ink2:#5A514A; --navy:#2C3A5C; --brown:#6E3E28; --brown2:#5A301E; --gold:#B8935A;
+  --orange:#D9752B; --green:#E3EBD3; --green-d:#8FA66A; --line:#D9CFBF; --gray:#E7E1D6;
+  --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+  --g:20px; color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:64px}
+body{margin:0; background:#E9E0CE url(paper.jpg) center/700px; color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased}
+img,video{display:block; max-width:100%; height:auto}
+h1,h2,h3,h4{margin:0; font-family:var(--serif); line-height:1.4; word-break:keep-all; overflow-wrap:anywhere}
+p{margin:0}
+a{color:inherit}
+.ib{display:inline-block}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0)}
+.sheet{max-width:480px; margin:0 auto; background:var(--paper) url(paper.jpg) center top/520px; overflow:hidden; box-shadow:0 0 0 1px rgba(80,60,30,.08),0 30px 80px -30px rgba(80,60,30,.35)}
+section{position:relative; padding:56px var(--g) 0}
+h2{font-size:clamp(1.45rem,6.4vw,1.85rem); font-weight:800; color:var(--navy)}
+.btn{display:flex; justify-content:center; align-items:center; gap:10px; background:var(--brown); color:#fff; text-decoration:none; font-weight:700; font-size:1rem; padding:15px 18px; border-radius:40px}
+.btn::after{content:"→"}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--orange); outline-offset:3px}
+
+/* header */
+.mast{position:sticky; top:env(safe-area-inset-top,0px); z-index:30; display:flex; align-items:center; justify-content:space-between; padding:8px var(--g); background:rgba(250,245,232,.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--line)}
+.brand{display:flex; align-items:center; gap:8px}
+.brand img:first-child{width:30px} .brand .wm{width:110px}
+.mast-link{font-size:.88rem; font-weight:700; color:var(--brown); text-decoration:none; border-bottom:2px solid var(--brown)}
+
+/* 1. first view */
+.fv{padding:0; min-height:calc(100svh - 50px); display:grid; grid-template-columns:31% 1fr; grid-template-rows:1fr auto auto auto; position:relative}
+.loops{position:absolute; left:34%; top:12%; width:120%; aspect-ratio:1; opacity:.5; pointer-events:none;
+  background:
+   radial-gradient(circle at 25% 25%, transparent 20%, var(--gray) 20.5% 31%, transparent 31.5%),
+   radial-gradient(circle at 75% 25%, transparent 20%, var(--gray) 20.5% 31%, transparent 31.5%),
+   radial-gradient(circle at 25% 75%, transparent 20%, var(--gray) 20.5% 31%, transparent 31.5%),
+   radial-gradient(circle at 75% 75%, transparent 20%, var(--gray) 20.5% 31%, transparent 31.5%)}
+.fv-wm{grid-column:1; grid-row:1 / span 2; width:auto; height:min(70svh,560px); margin:24px 0 0 12px; align-self:start; position:relative}
+.fv-copy{grid-column:2; grid-row:1; position:relative; padding:28px var(--g) 0 8px}
+.kana{font-family:var(--serif); font-weight:800; font-size:.92rem; color:var(--ink)}
+.kana span{display:block; font-size:.62rem; letter-spacing:.12em; color:var(--ink2)}
+.catch{margin-top:16px; font-family:var(--serif); font-weight:800; color:var(--orange); font-size:1rem; line-height:1.55}
+.fv h1{margin-top:12px; color:var(--navy); font-weight:800; font-size:clamp(1.65rem,8.4vw,2.2rem); line-height:1.35}
+.fv h1 span{display:block; white-space:nowrap}
+.lead{margin-top:12px; font-size:.86rem; color:var(--ink2); line-height:1.7}
+.k12{margin-top:18px; width:116px; aspect-ratio:1; border-radius:50%; border:4px solid var(--gold); outline:1px solid var(--gold); outline-offset:-10px; background:#FFFCF4;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:var(--serif); font-weight:800; color:var(--brown); line-height:1.25; font-size:.95rem}
+.fv-icons{list-style:none; margin:14px 0 0; padding:0; display:grid; gap:6px}
+.fv-icons li{display:flex; align-items:center; gap:10px; font-size:.78rem; font-weight:700; color:var(--navy); line-height:1.35}
+.fv-icons img{width:46px}
+.fv-icons li:last-child img{border:2px solid var(--navy); border-radius:50%; padding:2px; height:46px; object-fit:contain}
+.fv > .wall{grid-column:1 / -1; grid-row:2; align-self:end}
+.wall{position:relative; height:86px; background:url(wall.jpg) left bottom/auto 86px repeat-x; margin-top:36px}
+.wall .sil{position:absolute; right:22px; bottom:76px; width:130px}
+.fv-acts{grid-column:1 / -1; grid-row:3; display:grid; gap:10px; padding:16px var(--g) 0; background:#EADBC2}
+.fv-acts .txt{text-align:center; font-weight:700; color:var(--navy); font-size:.92rem}
+.fv-note{grid-column:1 / -1; grid-row:4; padding:8px var(--g) 18px; font-size:.72rem; color:var(--ink2); background:#EADBC2}
+
+/* 2. movie */
+.movie{text-align:center}
+.player{position:relative; margin:22px auto 0; width:min(78%,320px); aspect-ratio:9/16; background:#111; border-radius:6px; overflow:hidden; box-shadow:0 24px 40px -20px rgba(60,40,20,.5)}
+.player video{width:100%; height:100%; object-fit:cover}
+.play{position:absolute; left:50%; top:50%; translate:-50% -50%; width:70px; height:70px; border-radius:50%; border:0; background:var(--brown); display:grid; place-items:center; cursor:pointer; box-shadow:0 0 0 8px rgba(110,62,40,.25); transition:opacity .2s}
+.play svg{width:40%; fill:#fff}
+.player.on .play{opacity:0} .player.on:hover .play{opacity:1}
+.bar-p{position:absolute; left:0; right:0; bottom:0; height:4px; background:rgba(255,255,255,.25)} .bar-p i{display:block; height:100%; width:0; background:var(--gold)}
+.movie .cap{margin-top:10px; font-size:.78rem; color:var(--ink2)}
+
+/* 3. K12 green box, cut at an angle */
+.k12-sec{padding:64px 0 0}
+.green{background:var(--green); padding:64px var(--g) 40px; clip-path:polygon(0 36px,100% 0,100% 100%,0 100%); position:relative}
+.green::before,.green::after{content:""; position:absolute; width:70px; height:70px; border:2px solid var(--green-d); opacity:.55}
+.green::before{left:12px; top:46px; border-right:0; border-bottom:0; border-radius:40px 0 0 0}
+.green::after{right:12px; bottom:14px; border-left:0; border-top:0; border-radius:0 0 40px 0}
+.green .q{font-family:var(--serif); font-weight:800; color:var(--brown); font-size:1rem}
+.green h2{margin:6px 0 16px}
+.green p+p{margin-top:12px}
+.green p{font-size:.95rem}
+.green .big{font-family:var(--serif); font-weight:800; color:var(--navy); font-size:1.12rem; line-height:1.6; margin-top:18px}
+
+/* 4. ribbon + thought */
+.omoi{padding-top:70px}
+.ribbon{text-align:center}
+.ribbon span{position:relative; display:inline-block; background:var(--brown); color:#FBEBDC; font-family:var(--serif); font-weight:800; padding:8px 30px; font-size:1.02rem}
+.ribbon span::before,.ribbon span::after{content:""; position:absolute; top:8px; width:26px; height:100%; background:var(--brown2); z-index:-1}
+.ribbon span::before{left:-18px; clip-path:polygon(0 0,100% 0,100% 100%,0 100%,40% 50%)}
+.ribbon span::after{right:-18px; clip-path:polygon(0 0,100% 0,60% 50%,100% 100%,0 100%)}
+.omoi h2{margin-top:22px; text-align:center; font-size:clamp(1.4rem,6.6vw,1.8rem)}
+.omoi .sub{text-align:center; font-family:var(--serif); font-weight:800; color:var(--brown); margin:6px 0 18px; font-size:1rem; line-height:1.6}
+.omoi p:not(.sub):not(.ribbon){font-size:.95rem; color:var(--ink2)}
+.omoi p+p{margin-top:10px}
+.omoi-kmt{position:absolute; right:-40px; bottom:-60px; width:220px; opacity:.12; pointer-events:none}
+
+/* 5. commitments */
+.kodawari{padding-top:76px}
+.vine{height:22px; background:
+  radial-gradient(circle,var(--green-d) 4px,transparent 4.5px) 0 0/34px 22px repeat-x,
+  linear-gradient(transparent 4px,var(--green-d) 4px 7px,transparent 7px)}
+.kodawari h2{text-align:center; margin:22px 0 14px; color:var(--brown)}
+.kd{list-style:none; margin:0 0 22px; padding:0}
+.kd li{display:grid; grid-template-columns:58px 1fr; gap:12px; padding:16px 0; border-bottom:1px dashed var(--line)}
+.kd li:last-child{border-bottom:0}
+.kd img{width:58px}
+.kd h3{display:inline-block; background:var(--brown); color:#fff; font-family:var(--sans); font-size:.95rem; font-weight:700; padding:2px 16px 2px 12px; border-radius:20px; margin-bottom:6px}
+.kd h3::before{content:"☛ "}
+.kd p{font-size:.9rem; color:var(--ink2); line-height:1.75}
+.kd .in{margin-top:6px; font-size:.8rem; font-weight:700; color:var(--brown)}
+.kd .note{margin-top:6px; font-size:.76rem}
+
+/* 6. lineup */
+.lineup{padding-top:70px}
+.lineup h2{text-align:center}
+.tabs{display:grid; grid-template-columns:1fr 1fr; margin:22px 0 0; border-bottom:3px solid var(--navy)}
+.tabs button{all:unset; text-align:center; padding:12px 0; font-weight:700; cursor:pointer; color:var(--ink2); background:rgba(255,255,255,.4)}
+.tabs .cat[aria-selected="true"]{background:var(--navy); color:#fff}
+.tabs .dog[aria-selected="true"]{background:var(--brown); color:#fff}
+.lineup:has(.dog[aria-selected="true"]) .tabs{border-color:var(--brown)}
+.prod{padding:26px 0 20px; border-bottom:1px solid var(--line)}
+.prod h3{font-family:var(--sans); font-weight:800; font-size:1.06rem; text-align:center; padding:8px 0; border-top:2px solid; border-bottom:2px solid}
+.prod.cat h3{color:var(--navy); border-color:var(--navy)} .prod.dog h3{color:var(--brown); border-color:var(--brown)}
+.prod-top{display:grid; grid-template-columns:42% 1fr; gap:14px; margin-top:16px; align-items:start}
+.bag{width:100%; box-shadow:0 14px 24px -14px rgba(60,40,20,.5)}
+.tgt{display:inline-block; color:#fff; font-weight:700; font-size:1rem; padding:6px 12px; line-height:1.3}
+.tgt small{display:block; font-size:.72rem; font-weight:500; opacity:.9}
+.cat .tgt{background:var(--navy)} .dog .tgt{background:var(--brown)}
+.marks{list-style:none; margin:8px 0 0; padding:0; font-size:.82rem; font-weight:700}
+.plus{display:inline-block; margin-top:8px; font-size:.74rem; border:1px solid var(--ink2); border-radius:20px; padding:1px 10px}
+.prices{margin-top:8px}
+.price{border-collapse:collapse; width:100%; font-size:.86rem; font-variant-numeric:tabular-nums}
+.price + .price{margin-top:6px}
+.price caption{text-align:left; font-weight:700; font-size:.8rem}
+.price th{font-weight:500; font-size:.72rem; color:var(--ink2); border-bottom:1px solid var(--ink2); text-align:left; padding:2px 4px}
+.price td{padding:1px 4px; border-bottom:1px solid var(--line)}
+.price td:last-child{text-align:right; font-weight:700}
+.origin{margin-top:8px; font-size:.82rem}
+.kibs{display:flex; flex-wrap:wrap; align-items:center; gap:4px 16px; margin-top:12px}
+.kib{margin:0; display:flex; align-items:center; gap:8px; font-size:.78rem}
+.kib img{width:44px}
+.img-note{font-size:.7rem; color:var(--ink2)}
+details{margin-top:10px; border:1px solid var(--line); background:rgba(255,255,255,.45)}
+summary{cursor:pointer; padding:10px 14px; font-weight:700; font-size:.9rem; list-style:none; display:flex; justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋"} details[open] summary::after{content:"−"}
+details > *:not(summary){margin-left:14px; margin-right:14px}
+details h4{font-family:var(--sans); font-size:.82rem; margin-top:4px; padding:3px 8px; color:#fff}
+.cat details h4{background:var(--navy)} .dog details h4{background:var(--brown)}
+.spec{border-collapse:collapse; width:calc(100% - 28px); font-size:.84rem; margin-bottom:10px; font-variant-numeric:tabular-nums}
+.spec th{text-align:left; font-weight:500; padding:3px 0; border-bottom:1px solid var(--line)}
+.spec td{text-align:right; padding:3px 0; border-bottom:1px solid var(--line)}
+.kcal{font-size:.88rem; margin-bottom:12px}
+.ing{font-size:.8rem; line-height:1.75; color:var(--ink2); margin-bottom:12px}
+.pnote{font-size:.76rem; margin-bottom:12px}
+.notes{margin-top:18px; font-size:.74rem; color:var(--ink2)}
+
+/* 7. framed notes */
+.about{padding-top:64px}
+.frame{position:relative; border:2px solid var(--brown); outline:1px solid var(--brown); outline-offset:-8px; padding:34px 22px 24px; background:rgba(255,253,246,.6)}
+.frame::before,.frame::after{content:"❦"; position:absolute; color:var(--brown); font-size:1.4rem; line-height:1; background:var(--paper); padding:0 6px}
+.frame::before{top:-14px; left:50%; translate:-50% 0} .frame::after{bottom:-14px; left:50%; translate:-50% 0; rotate:180deg}
+.frame h2{text-align:center; color:var(--brown); font-size:1.3rem; margin-bottom:12px}
+.frame ul{list-style:none; margin:0; padding:0}
+.frame li{position:relative; padding-left:1.2em; font-size:.92rem; margin-top:10px}
+.frame li::before{content:"◆"; position:absolute; left:0; color:var(--brown); font-size:.8em; top:.2em}
+
+/* 8. seller */
+.seller{padding:60px var(--g) 30px}
+.seller .kmt{width:120px; margin:0 auto 14px}
+.seller dl{margin:0 0 20px; border-top:1px solid var(--line)}
+.seller dl div{display:grid; grid-template-columns:5.5em 1fr; gap:10px; padding:12px 0; border-bottom:1px solid var(--line)}
+.seller dt{font-size:.8rem; text-align:center; border:1px solid var(--ink2); height:fit-content; padding:1px 0}
+.seller dd{margin:0; font-size:.92rem; line-height:1.7}
+.seller dd b{font-size:1.05rem}
+
+.foot{padding:110px 0 90px; background:linear-gradient(transparent 110px,#EADBC2 110px); text-align:left}
+.foot .wall{margin-top:0}
+.foot p{padding:12px var(--g) 0; font-size:.72rem; color:var(--ink2)}
+
+/* phone bar */
+.bar{position:fixed; left:0; right:0; bottom:0; z-index:40; padding:10px var(--g) calc(10px + env(safe-area-inset-bottom,0px)); transform:translateY(110%); transition:transform .25s; max-width:480px; margin:0 auto}
+.bar.on{transform:none}
+.bar a{display:block; text-align:center; background:var(--brown); color:#fff; text-decoration:none; font-weight:700; padding:13px; border-radius:40px; box-shadow:0 10px 24px -10px rgba(60,30,10,.6)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
